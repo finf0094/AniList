@@ -1,95 +1,30 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import { Container, Divider, Image, Title } from './components';
+import AnimeList from './components/AnimeList';
+import { BsChevronDoubleDown } from '@react-icons/all-files/bs/BsChevronDoubleDown'
+
 
 export default function Home() {
+
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <main >
+      <Container size="100rem" px="xs">
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <Image alt="pink girl" src="/images/divider.png" width='300px' sx={{textAlign: 'center', margin: '0 auto'}} className='falling-text'/>
+        <Divider color='pink' sx={{textAlign: 'center', margin: "0 auto"}} w='500px' size='sm' className='falling-text'/>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+        <Title order={1} size={50} sx={{ textAlign: "center", transition: "all 0.5 ease-out" }} className='falling-text'>ДОБРО ПОЖАЛОВАТЬ В МИР АНИМЕ</Title>
+        <Title order={3} color='gray.8' fw={400} sx={{ textAlign: "center", }} className='falling-text' mt="xs">Лучшие аниме сериалы и фильмы ждут тебя !</Title>
+      </Container>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+      <Container size="lg" px="xs" sx={{textAlign: "center"}} mt='lg'>
+        <BsChevronDoubleDown style={{ fontSize: "3rem" }}  />
+      </Container>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+      <Container size='lg' px="xs" sx={{ marginTop: "5rem" }}>
+        <AnimeList key={1}/>
+      </Container>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
     </main>
   )
 }

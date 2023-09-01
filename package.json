@@ -9,14 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/server": "^11.11.0",
+    "@mantine/carousel": "^6.0.19",
+    "@mantine/core": "^6.0.19",
+    "@mantine/hooks": "^6.0.19",
+    "@mantine/next": "^6.0.19",
+    "@react-icons/all-files": "^4.1.0",
+    "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
+    "embla-carousel-react": "^8.0.0-rc12",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-player": "^2.12.0",
+    "react-redux": "^8.1.2",
     "typescript": "5.2.2"
   }
 }
