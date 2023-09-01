@@ -2,7 +2,6 @@
 
 import { useGetAnimeQuery } from "@/app/store/anime/anime.api"
 import { Box, Button, Container, Grid, Image, Loader, Modal, Text, Title, useDisclosure } from "@/components"
-import { Metadata } from "next"
 import ReactPlayer from "react-player"
 import { useState } from 'react'
 
@@ -119,7 +118,7 @@ const Code: React.FC<Props> = ({ params: { code } }) => {
                 </Container>
 
                 <ReactPlayer
-                    url={`http://${data?.player.host}/${data?.player?.list[episode]?.hls?.[selectedQuality]}`}
+                    url={`https://${data?.player.host}/${data?.player?.list[episode]?.hls?.[selectedQuality]}`}
                     controls
                     width="100%"
                     height="auto"
