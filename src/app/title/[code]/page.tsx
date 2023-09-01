@@ -6,10 +6,6 @@ import { Metadata } from "next"
 import ReactPlayer from "react-player"
 import { useState } from 'react'
 
-export const metadata: Metadata = {
-    title: 'Anime',
-    description: 'Do you like Anime? if so watch your favourite anime AniList !',
-}
 
 type Props = {
     params: {
