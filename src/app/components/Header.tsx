@@ -84,7 +84,7 @@ export function HeaderAction({ links }: HeaderActionProps) {
     const { classes } = useStyles();
     const [opened, { toggle }] = useDisclosure(false);
 
-    
+
 
     const items = links.map((link) => {
         const menuItems = link.links?.map((item) => (
@@ -142,14 +142,14 @@ export function HeaderAction({ links }: HeaderActionProps) {
         <Header height={HEADER_HEIGHT} sx={{ borderBottom: 0, margin: 10 }} mb={120}>
 
             <Container className={classes.inner} fluid>
-                <Modal opened={opened} onClose={toggle} title={<Link href="/" style={{textDecoration: "none"}}><Title order={3} color='pink'>AniList</Title></Link>}>
+                <Modal opened={opened} onClose={toggle} title={<Link href="/" style={{ textDecoration: "none" }}><Title order={3} color='pink'>AniList</Title></Link>}>
                     <MediaQuery query="(max-width: 500px) and (min-width: 100px)"
                         styles={{ display: 'flex', flexDirection: 'column' }}>
                         <Title order={3} color='pink'>{items}</Title>
                     </MediaQuery>
 
                 </Modal>
-                
+
 
                 <Group>
                     <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
@@ -163,7 +163,11 @@ export function HeaderAction({ links }: HeaderActionProps) {
                 </Group>
                 <Group className='falling-text'>
                     <SearchBox />
-                    <Button><FaFilter /></Button>
+                    <Button sx={{
+                        "@media screen and (max-width: 360px)": {
+                            display: 'none'// Adjust the font size for smaller screens (e.g., mobile phones)
+                        },
+                    }}><FaFilter /></Button>
                 </Group>
 
             </Container>

@@ -54,19 +54,28 @@ const Code: React.FC<Props> = ({ params: { code } }) => {
 
             <Container>
                 <Grid>
-                    <Grid.Col span={3} xs={4} >
+                    <Grid.Col xs={5} md={3} sm={3}>
                         <Image
                             radius="lg"
                             src={`https://api.litelibria.com/posters/${data?.id}.webp`}
                             sx={{
                                 maxHeight: 400,
+                                "@media screen and (max-width: 360px)": {
+                                    maxWidth: "250px",
+                                    margin: "0 auto"// Adjust the font size for smaller screens (e.g., mobile phones)
+                                },
+                                "@media screen and (max-width: 600px)": {
+                                    maxWidth: "250px",
+                                    margin: "0 auto"// Adjust the font size for smaller screens (e.g., mobile phones)
+                                },
+                                
                             }}
                             alt={data?.code}
                             withPlaceholder
                             onClick={posterModalOpen}
                         />
                     </Grid.Col>
-                    <Grid.Col span={8} xs={8}>
+                    <Grid.Col xs={7} md={8} sm={9}>
                         <Box>
                             <Title order={3} sx={{
                                 maxHeight: 65, overflow: "hidden", whiteSpace: "break-spaces", textOverflow: 'ellipsis'
@@ -113,12 +122,26 @@ const Code: React.FC<Props> = ({ params: { code } }) => {
                     style={{ marginTop: "3rem", borderRadius: 15, overflow: "hidden" }}
                 />
                 <Container size="xs" mt='lg'>
+
+                    <Box>
+                        {quality.map((item, index) => (
+                            <Button
+                                key={index}
+                                variant="default"
+                                onClick={() => setSelectedQuality(item)}
+                                bg={selectedQuality === item ? "pink" : "transparent"}
+                            >
+                                {item}
+                            </Button>
+                        ))}
+                    </Box>
+
                     {data && data.player.episodes.last && (
                         Array.from({ length: data.player.episodes.last }, (_, index) => (
-                            <button
+                            <Button
                                 key={index}
                                 onClick={() => setEpisode(index + 1)} // Эпизоды начинаются с 1
-                                style={{
+                                sx={{
                                     background: episode === index + 1 ? "pink" : "transparent",
                                     border: "1px solid pink",
                                     borderRadius: "5px",
@@ -128,20 +151,10 @@ const Code: React.FC<Props> = ({ params: { code } }) => {
                                 }}
                             >
                                 Эпизод {index + 1}
-                            </button>
+                            </Button>
                         ))
                     )}
 
-                    {quality.map((item, index) => (
-                        <Button
-                            key={index}
-                            variant="default"
-                            onClick={() => setSelectedQuality(item)}
-                            bg={selectedQuality === item ? "pink" : "transparent"}
-                        >
-                            {item}
-                        </Button>
-                    ))}
 
                 </Container>
             </Container>
