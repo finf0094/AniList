@@ -11,6 +11,7 @@ const AnimeCard: React.FC<{ data: AnimeList }> = ({ data }) => {
 
   return (
     <Card shadow="sm" padding="lg" radius="lg" withBorder
+    className='falling-text'
       sx={{
         cursor: "crosshair",
         transition: "all 0.2s ease-out",
@@ -19,10 +20,16 @@ const AnimeCard: React.FC<{ data: AnimeList }> = ({ data }) => {
           transform: "translateY(-5px)",
           backdropFilter: "blur(50px)",
           filter: "brightness(75%)"
-        }
+        },
+        "@media screen and (max-width: 660px)": {
+          maxWidth: "300px",
+          textAlign: 'center',
+          margin: "0 auto" // Adjust the font size for smaller screens (e.g., mobile phones)
+        },
+        
       }} >
 
-      <Card.Section>
+      <Card.Section >
         <Image
           src={`https://api.litelibria.com/posters/${data.id}.webp`}
           height={400}
@@ -39,7 +46,7 @@ const AnimeCard: React.FC<{ data: AnimeList }> = ({ data }) => {
       </Group>
 
 
-      <Text variant="light" color="gray.6" mt="md" w={320} sx={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+      <Text variant="light" color="gray.6" mt="md" sx={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', maxWidth: 320  }}>
         {data.genres.map((genre, index) => (
           <span key={genre}>
             {genre}

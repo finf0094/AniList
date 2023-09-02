@@ -3,6 +3,7 @@ import AnimeList from './components/AnimeList';
 import { BsChevronDoubleDown } from '@react-icons/all-files/bs/BsChevronDoubleDown'
 
 
+
 export default function Home() {
 
 
@@ -10,19 +11,76 @@ export default function Home() {
     <main >
       <Container size="100rem" px="xs">
 
-        <Image alt="pink girl" src="/images/divider.png" width='300px' sx={{textAlign: 'center', margin: '0 auto'}} className='falling-text'/>
-        <Divider color='pink' sx={{textAlign: 'center', margin: "0 auto"}} w='500px' size='sm' className='falling-text'/>
+        <Image alt="pink girl" src="/images/divider.png" sx={{
+          textAlign: 'center',
+          margin: '0 auto',
+          maxWidth: "400px",
+          transition: "all 0.5s ease-out",
+          "@media screen and (max-width: 600px)": {
+            maxWidth: "200px", // Adjust the font size for smaller screens (e.g., mobile phones)
+          },
+          "@media screen and (min-width: 1441px)": {
+            maxWidth: "500px", // Adjust the font size for extra-large screens (e.g., large desktops)
+          },
+        }} className='falling-text' />
+        <Divider color='pink' sx={{ textAlign: 'center', margin: "0 auto", maxWidth: 500 }} size='sm' className='falling-text' />
 
-        <Title order={1} size={50} sx={{ textAlign: "center", transition: "all 0.5 ease-out" }} className='falling-text'>ДОБРО ПОЖАЛОВАТЬ В МИР АНИМЕ</Title>
-        <Title order={3} color='gray.8' fw={400} sx={{ textAlign: "center", }} className='falling-text' mt="xs">Лучшие аниме сериалы и фильмы ждут тебя !</Title>
+
+        <Title
+          order={1}
+          size={50} // Adjust the default size here
+          sx={{
+            textAlign: "center",
+            transition: "all 0.5s ease-out",
+            "@media screen and (max-width: 600px)": {
+              fontSize: "25px", // Adjust the font size for smaller screens (e.g., mobile phones)
+            },
+            "@media screen and (min-width: 601px) and (max-width: 1024px)": {
+              fontSize: "35px", // Adjust the font size for tablets
+            },
+            "@media screen and (min-width: 1025px) and (max-width: 1440px)": {
+              fontSize: "45px", // Adjust the font size for larger screens (e.g., desktops)
+            },
+            "@media screen and (min-width: 1441px)": {
+              fontSize: "55px", // Adjust the font size for extra-large screens (e.g., large desktops)
+            },
+          }}
+          className='falling-text'
+        >
+          ДОБРО ПОЖАЛОВАТЬ В МИР АНИМЕ
+        </Title>
+        <Title
+          order={3}
+          color='gray.8'
+          fw={400}
+          sx={{
+            textAlign: "center",
+            "@media screen and (max-width: 600px)": {
+              fontSize: "18px", // Adjust the font size for smaller screens (e.g., mobile phones)
+            },
+            "@media screen and (min-width: 601px) and (max-width: 1024px)": {
+              fontSize: "25px", // Adjust the font size for tablets
+            },
+            "@media screen and (min-width: 1025px) and (max-width: 1440px)": {
+              fontSize: "35px", // Adjust the font size for larger screens (e.g., desktops)
+            },
+            "@media screen and (min-width: 1441px)": {
+              fontSize: "45px", // Adjust the font size for extra-large screens (e.g., large desktops)
+            },
+          }}
+          className='falling-text'
+          mt="xs"
+        >
+          Лучшие аниме сериалы и фильмы ждут тебя!
+        </Title>
       </Container>
 
-      <Container size="lg" px="xs" sx={{textAlign: "center"}} mt='lg'>
-        <BsChevronDoubleDown style={{ fontSize: "3rem" }}  />
+      <Container size="lg" px="xs" sx={{ textAlign: "center" }} mt='lg'>
+        <BsChevronDoubleDown style={{ fontSize: "3rem" }} />
       </Container>
 
       <Container size='lg' px="xs" sx={{ marginTop: "5rem" }}>
-        <AnimeList key={1}/>
+        <AnimeList key={1} />
       </Container>
 
     </main>

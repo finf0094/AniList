@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Provider from './provider'
-import { HeaderAction } from './components/Header'
 import './main.css'
+import { HeaderAction } from './components/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -33,6 +33,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="images/juuzou.png" />
+      </head>
       <Provider>
         <body className={inter.className} suppressHydrationWarning={true}>
           <HeaderAction links={links} />
