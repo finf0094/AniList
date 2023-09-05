@@ -13,7 +13,7 @@
       getAnime: builder.query<IAnime, string>({
         query: (code) => `/title?code=${code}`
       }),
-      searchAnime: builder.query<ISearchRoot | undefined, string>({
+      searchAnime: builder.query<ISearchRoot, string>({
         query: (animeName) =>  `/title/search?search=${animeName}&filter=id,names,genres,code,posters&limit=5`
       }),
       sheduleAnimes: builder.query<RootSchedule[], string>({

@@ -11,17 +11,17 @@ interface ItemProps extends SelectItemProps {
 
 const SearchboxItem = forwardRef<HTMLDivElement, ItemProps>(
   ({ animeId, code, value, genres, ...others }: ItemProps, ref) => (
-      <Flex ref={ref} {...others} justify="space-between" align="center" sx={{position: 'absolute', zIndex: 9999 }}>
+      <Flex ref={ref} {...others} justify="space-between" align="center" sx={{ zIndex: 9999 }}>
         <Group noWrap>
           <Avatar src={`https://api.litelibria.com/posters/${animeId}.webp`} />
-          <div>
+          <Box>
             <Text sx={{ maxWidth: 90, maxHeight: 40, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{value}</Text>
             <Box color="dimmed" sx={{ maxHeight: 40, maxWidth: 90, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
               {genres.map((genre, ind) => (
                 <Text key={ind} color='pink'>{genre}, </Text>
               ))}
             </Box>
-          </div>
+          </Box>
         </Group>
         <FiChevronRight style={{ fontSize: "1.4rem" }} />
       </Flex>
