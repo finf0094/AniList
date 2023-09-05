@@ -34,7 +34,7 @@ const Code: React.FC<Props> = ({ params: { code } }) => {
         if (savedPositions) {
             setEpisodePositions(JSON.parse(savedPositions));
         }
-    }, []);
+    }, [code]);
 
     // Обработчик изменения позиции видео
     const handleProgress = (state: any) => {
