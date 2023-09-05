@@ -1,3 +1,12 @@
+
+
 export default function title() {
-    return <h2>hello</h2>
+
+    return (<>
+    
+        
+            <h2>Hello</h2>
+        
+    </>
+    )
 } 

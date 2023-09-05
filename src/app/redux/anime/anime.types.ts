@@ -19,6 +19,10 @@ export interface RootSchedule {
   list: List[]
 }
 
+export interface IRandomAnime {
+  code: string
+}
+
 export interface IAnime {
   id: number
   code: string

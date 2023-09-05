@@ -1,4 +1,4 @@
-import { Container, Divider, Image, Title } from './components';
+import { Container, Divider, Image, Title, Text, Center } from './components';
 import AnimeList from './components/AnimeList';
 import { BsChevronDoubleDown } from '@react-icons/all-files/bs/BsChevronDoubleDown'
 
@@ -6,9 +6,8 @@ import { BsChevronDoubleDown } from '@react-icons/all-files/bs/BsChevronDoubleDo
 
 export default function Home() {
 
-
   return (
-    <main >
+    <main>
       <Container size="100rem" px="xs">
 
         <Image alt="pink girl" src="/images/divider.png" sx={{
@@ -79,9 +78,10 @@ export default function Home() {
         <BsChevronDoubleDown style={{ fontSize: "3rem" }} />
       </Container>
 
-      <Container size='lg' px="xs" sx={{ marginTop: "5rem" }}>
-        <AnimeList key={1} />
-      </Container>
+      <Center mx='auto' sx={{ marginTop: "5rem", display: 'flex', flexDirection: "column" }}>
+        <Title>В разработке...</Title>
+        <Text color='gray.7'>Пока можете в разделе списков найти</Text>
+      </Center>
 
     </main>
   )

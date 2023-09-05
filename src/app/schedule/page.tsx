@@ -1,16 +1,18 @@
 'use client'
-import { useSheduleAnimesQuery } from '@/app/store/anime/anime.api'
-import { Container, Title } from '@/components';
+import { useSheduleAnimesQuery } from '@/app/redux/anime/anime.api'
+import { Center, Container, Loader, Title } from '@/components';
 import { Carousel } from '@mantine/carousel'
 import { useEffect, useState } from 'react'
 import Link from 'next/link';
 import AnimeCard from '../components/AnimeCard';
+import ErrorComponent from '../components/ErrorComponent';
 
 
 
 const Schedule = () => {
-    const { data } = useSheduleAnimesQuery('');
+    const { data, isLoading, error } = useSheduleAnimesQuery('');
     const [slideSize, setSlideSize] = useState('50%'); 
+
 
     useEffect(() => {
         const screenWidth = window.innerWidth;
@@ -18,6 +20,16 @@ const Schedule = () => {
             setSlideSize('20%'); 
         }
     }, [slideSize]);
+
+    if (isLoading) {
+        return <Center mx='auto'>
+            <Loader variant='bars' color='pink.5'></Loader>
+        </Center>
+    }
+
+    if (error) {
+        return <ErrorComponent/>
+    }
 
     const days: any = { 0: "Понедельник", 1: "Вторник", 2: "Среда", 3: "Четверг", 4: "Пятница", 5: "Суббота", 6: "Воскресенье" }
 

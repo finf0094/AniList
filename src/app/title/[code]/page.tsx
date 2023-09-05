@@ -1,11 +1,12 @@
 'use client'
 
-import { useGetAnimeQuery } from "@/app/store/anime/anime.api"
+import { useGetAnimeQuery } from "@/app/redux/anime/anime.api"
 import { Box, Button, Container, Grid, Image, Loader, Modal, Text, Title, useDisclosure } from "@/components"
 import ReactPlayer from "react-player"
-import { useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import ErrorComponent from "@/app/components/ErrorComponent"
 import ModalComponent from "@/app/components/ModalComponent"
+import Head from "next/head"
 
 
 type Props = {
@@ -22,6 +23,30 @@ const Code: React.FC<Props> = ({ params: { code } }) => {
     const { data, isLoading, error } = useGetAnimeQuery(code);
     const [episode, setEpisode] = useState<number>(1);
     const [selectedQuality, setSelectedQuality] = useState<string>('hd');
+    const [episodePositions, setEpisodePositions] = useState<{ [key: string]: number }>({});
+
+    // Создаем ref для ReactPlayer
+    const playerRef = useRef<ReactPlayer | null>(null);
+
+    useEffect(() => {
+        // При загрузке компонента, попробуйте получить сохраненные позиции из localStorage
+        const savedPositions = localStorage.getItem(`episodePositions_${code}`);
+        if (savedPositions) {
+            setEpisodePositions(JSON.parse(savedPositions));
+        }
+    }, []);
+
+    // Обработчик изменения позиции видео
+    const handleProgress = (state: any) => {
+        // Копируем текущее состояние позиций
+        const newPositions = { ...episodePositions };
+        // Сохраняем текущую позицию видео в новые позиции
+        newPositions[episode] = state.playedSeconds;
+        // Обновляем состояние позиций
+        setEpisodePositions(newPositions);
+        // Сохраняем новые позиции в localStorage
+        localStorage.setItem(`episodePositions_${code}`, JSON.stringify(newPositions));
+    };
 
 
 
@@ -42,6 +67,12 @@ const Code: React.FC<Props> = ({ params: { code } }) => {
 
     return (
         <>
+            <Head>
+                {/* Add your metadata here */}
+                <title>Your Page Title</title>
+                <meta name="description" content="Your page description" />
+                {/* Add other metadata tags as needed */}
+            </Head>
             <ModalComponent data={<Text size='xs'>{data?.description}</Text>} isOpen={isDescModalOpen} onClose={descModalClose} title="Описание" />
             <ModalComponent data={<Image
                 radius="lg"
@@ -68,7 +99,7 @@ const Code: React.FC<Props> = ({ params: { code } }) => {
                                     maxWidth: "250px",
                                     margin: "0 auto"// Adjust the font size for smaller screens (e.g., mobile phones)
                                 },
-                                
+
                             }}
                             alt={data?.code}
                             withPlaceholder
@@ -115,12 +146,23 @@ const Code: React.FC<Props> = ({ params: { code } }) => {
 
 
                 <ReactPlayer
+                    ref={(ref) => (playerRef.current = ref)} // Привязываем ref к ReactPlayer
                     url={`https://${data?.player.host}/${data?.player?.list[episode]?.hls?.[selectedQuality]}`}
                     controls
                     width="100%"
                     height="auto"
                     style={{ marginTop: "3rem", borderRadius: 15, overflow: "hidden" }}
+                    onProgress={handleProgress}
+                    // Устанавливаем начальную позицию видео для выбранной серии, если она сохранена
+                    playing={episodePositions[episode] !== undefined}
+                    onReady={() => {
+                        // Когда видео готово к воспроизведению, устанавливаем позицию
+                        if (episodePositions[episode] !== undefined && playerRef.current) {
+                            playerRef.current.seekTo(episodePositions[episode]);
+                        }
+                    }}
                 />
+
                 <Container size="xs" mt='lg'>
 
                     <Box>
@@ -162,4 +204,4 @@ const Code: React.FC<Props> = ({ params: { code } }) => {
     )
 }
 
-export default Code;
+export default Code;    

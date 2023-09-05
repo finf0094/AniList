@@ -21,7 +21,7 @@ const links = [
     label: 'Расписание'
   },
   {
-    link: '/list',
+    link: '/random',
     label: 'Случайное'
   }
 ];

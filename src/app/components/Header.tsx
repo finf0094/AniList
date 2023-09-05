@@ -85,17 +85,16 @@ export function HeaderAction({ links }: HeaderActionProps) {
     const [opened, { toggle }] = useDisclosure(false);
 
 
-
     const items = links.map((link) => {
         const menuItems = link.links?.map((item) => (
-            <a href={link.link}
+            <Link href={link.link}
                 className={classes.link}
                 onClick={(event) => event.preventDefault()}
                 key={item.link}>
                 <Menu.Item>
                     {item.label}
                 </Menu.Item>
-            </a>
+            </Link>
         ));
 
         if (menuItems) {
@@ -127,10 +126,6 @@ export function HeaderAction({ links }: HeaderActionProps) {
                 key={link.label}
                 href={link.link}
                 className={classes.link}
-                onClick={(event: React.FormEvent) => {
-                    event.preventDefault
-                    router.push(`/${link.link}/`)
-                }}
                 passHref
             >
                 {link.label}

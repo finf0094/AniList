@@ -4,7 +4,7 @@ import { CacheProvider } from "@emotion/react";
 import { useEmotionCache, MantineProvider } from "@/components";
 import { useServerInsertedHTML } from "next/navigation";
 
-import { store } from './store/store'
+import { store } from "./redux/store";
 import { Provider as ReduxProvider } from 'react-redux'
 
 

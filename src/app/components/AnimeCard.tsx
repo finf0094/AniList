@@ -11,7 +11,7 @@ const AnimeCard: React.FC<{ data: AnimeList }> = ({ data }) => {
 
   return (
     <Card shadow="sm" padding="lg" radius="lg" withBorder
-    className='falling-text'
+      className='falling-text'
       sx={{
         cursor: "crosshair",
         transition: "all 0.2s ease-out",
@@ -26,7 +26,7 @@ const AnimeCard: React.FC<{ data: AnimeList }> = ({ data }) => {
           textAlign: 'center',
           margin: "0 auto" // Adjust the font size for smaller screens (e.g., mobile phones)
         },
-        
+
       }} >
 
       <Card.Section >
@@ -35,18 +35,18 @@ const AnimeCard: React.FC<{ data: AnimeList }> = ({ data }) => {
           height={400}
           alt={data.code}
         />
-        
+
       </Card.Section>
 
       <Group position="apart" mt="md" mb="xs">
         <Text weight={500} w={200} sx={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
           {data.names.ru}
         </Text>
-        { <Badge color="pink" variant="light" sx={{fontSize: 10, fontWeight: 800}} size='lg'>{data.type.episodes} серий</Badge>}
+        {<Badge color="pink" variant="light" sx={{ fontSize: 10, fontWeight: 800 }} size='lg'>{data.type.episodes} серий</Badge>}
       </Group>
 
 
-      <Text variant="light" color="gray.6" mt="md" sx={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', maxWidth: 320  }}>
+      <Text variant="light" color="gray.6" mt="md" sx={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', maxWidth: 320 }}>
         {data.genres.map((genre, index) => (
           <span key={genre}>
             {genre}

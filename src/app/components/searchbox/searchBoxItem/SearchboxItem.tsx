@@ -1,17 +1,17 @@
 import { forwardRef } from 'react';
 import { Group, Avatar, Text, SelectItemProps, Box, Flex } from '@/components';
 import { FiChevronRight } from '@react-icons/all-files/fi/FiChevronRight'
+import { UrlWithStringQuery } from 'url';
 
 interface ItemProps extends SelectItemProps {
   animeId: number
   genres: string[]
-  code: string
-  posters: { small: { url: string } }
+  code: UrlWithStringQuery
 }
 
 const SearchboxItem = forwardRef<HTMLDivElement, ItemProps>(
-  ({ animeId, code, value, posters: { small: { url } }, genres, ...others }: ItemProps, ref) => (
-      <Flex ref={ref} {...others} justify="space-between" align="center">
+  ({ animeId, code, value, genres, ...others }: ItemProps, ref) => (
+      <Flex ref={ref} {...others} justify="space-between" align="center" sx={{position: 'absolute', zIndex: 9999 }}>
         <Group noWrap>
           <Avatar src={`https://api.litelibria.com/posters/${animeId}.webp`} />
           <div>

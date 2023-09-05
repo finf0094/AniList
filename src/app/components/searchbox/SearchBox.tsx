@@ -1,5 +1,5 @@
 'use client'
-import { useSearchAnimeQuery } from "@/app/store/anime/anime.api";
+import { useSearchAnimeQuery } from "@/app/redux/anime/anime.api";
 import { Autocomplete, Image, Loader } from "..";
 import SearchboxItem from "./searchBoxItem/SearchboxItem";
 import React, { useState } from "react";
