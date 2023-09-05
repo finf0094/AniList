@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { Card, Image, Text, Badge, Group } from '@/components';
-import { AnimeList } from '../store/anime/anime.types';
+import { AnimeList } from '../redux/anime/anime.types';
 
 
 
